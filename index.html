@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Receipts, prove what your agent did</title>
+<meta name="description" content="Interactive demo: seal every step an AI agent takes into a tamper-evident hash chain, then verify and replay it.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128273;</text></svg>">
+</head>
+<body>
+<header class="hero">
+  <p class="kicker">agent receipts / proof of concept</p>
+  <h1>Prove what your agent did.</h1>
+  <p class="sub">Every step an agent takes gets sealed into a hash chain. Change one character of history
+  and verification catches exactly where. Run an episode, tamper with it, replay it.</p>
+  <div class="hero-actions" id="episode-picker"></div>
+</header>
+
+<main>
+  <section class="seal-panel" id="seal-panel" hidden>
+    <div>
+      <p class="label">Episode seal</p>
+      <code class="seal" id="seal-value"></code>
+    </div>
+    <div class="seal-status" id="seal-status"></div>
+  </section>
+
+  <section class="toolbar" id="toolbar" hidden>
+    <button id="btn-verify" class="btn">Verify chain</button>
+    <button id="btn-replay" class="btn">Replay steps</button>
+    <button id="btn-tamper" class="btn btn-danger-outline">Tamper mode: off</button>
+    <button id="btn-export" class="btn btn-ghost">Export receipts</button>
+    <label class="btn btn-ghost" for="import-file">Verify a file</label>
+    <input type="file" id="import-file" accept="application/json" hidden>
+  </section>
+
+  <p class="hint" id="tamper-hint" hidden>Tamper mode is on: edit any output below, then verify.</p>
+
+  <section class="chain" id="chain"></section>
+
+  <section class="explainer">
+    <h2>What this is</h2>
+    <p>Agents take actions: searching, calculating, sending. A receipt chain makes that history
+    <strong>tamper-evident</strong>. Each receipt hashes the step's tool, input, output and the previous
+    receipt's hash, so editing any step breaks the seal at that step and invalidates everything after it.</p>
+    <p>Replayable tools (fixed data, pure functions) are re-executed during replay and compared with the
+    recorded output. Side-effecting steps like <code>send_summary</code> can't be honestly re-run; their
+    receipt is the record. Everything runs locally in your browser. No data leaves this page.</p>
+    <p class="fine">Built as a public proof of concept for agent reliability work. MIT licensed.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Agent Receipts, a proof-of-concept by <a href="https://github.com/Kulraj69" rel="noopener">Kulraj Singh</a>.
+  <a href="https://github.com/Kulraj69/agent-receipts" rel="noopener">Source</a>.</p>
+</footer>
+
+<script src="receipts.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
