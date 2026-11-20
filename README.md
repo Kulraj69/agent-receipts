@@ -3,7 +3,7 @@
 Prove what your agent did. An interactive, browser-based proof of concept for
 **tamper-evident agent execution receipts**.
 
-Live demo: _hosted URL goes here once deployed_
+Live demo: https://kulraj69.github.io/agent-receipts/
 
 ## What it does
 
