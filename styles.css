@@ -97,3 +97,10 @@ pre {
 
 footer { border-top: 1px solid var(--line); padding: 24px; text-align: center; color: var(--muted); font-size: 14px; }
 footer a { color: var(--accent); text-decoration: none; }
+
+.caveat {
+  color: var(--warn); font-size: 14px; max-width: 640px;
+  background: rgba(251, 191, 36, .07); border: 1px solid rgba(251, 191, 36, .25);
+  border-radius: 10px; padding: 12px 14px; margin: 0 0 24px;
+}
+.caveat strong { color: var(--warn); }
