@@ -58,9 +58,21 @@ node test.js
 ## Honest scope
 
 This is a proof of concept. The tool registry uses fixed demo data so replay is
-meaningful. Receipts prove a record was not altered after sealing; they do not
-prove the agent's outputs were correct, and a receipt for a side effect proves
-the record exists, not that the world agrees with it.
+meaningful.
+
+Security boundary, stated plainly:
+
+- An **unkeyed** hash chain is tamper-evident, not tamper-proof. It detects
+  edits relative to the retained hashes, but anyone holding the receipts can
+  rewrite the whole history and recompute a clean-looking chain.
+- A receipt does not prove a step actually executed, only that the record was
+  sealed. It says nothing about whether the agent's outputs were correct.
+- Proving an execution to someone else needs the seal **anchored** somewhere
+  the editor cannot rewrite: a digital signature, a trusted timestamping
+  service, or publishing the seal to an independent log. Anchoring is out of
+  scope for this demo.
+- A receipt for a side effect proves the record exists, not that the world
+  agrees with it.
 
 ## License
 
