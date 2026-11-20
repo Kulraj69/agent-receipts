@@ -14,6 +14,10 @@
   <h1>Prove what your agent did.</h1>
   <p class="sub">Every step an agent takes gets sealed into a hash chain. Change one character of history
   and verification catches exactly where. Run an episode, tamper with it, replay it.</p>
+  <p class="caveat"><strong>Honest boundary:</strong> an unkeyed hash chain is tamper-evident, not tamper-proof.
+  Anyone holding the receipts can rewrite the history and re-seal it, and a receipt does not prove the step actually
+  happened. Real proof needs the seal anchored somewhere trusted, such as a signature, a timestamp or a public post.
+  This demo shows detection, not anchoring.</p>
   <div class="hero-actions" id="episode-picker"></div>
 </header>
 
